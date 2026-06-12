@@ -1,1 +1,34 @@
 /* You can add global styles to this file, and also import other style files */
+/* Quando a tela for menor que 768px (tablets e celulares) */
+@media (max-width: 768px) {
+  .home-wrapper {
+    flex-direction: column !important; /* Empilha a barra lateral e o conteúdo */
+    height: auto !important;
+    min-height: 100vh;
+  }
+
+  .sidebar {
+    width: 100% !important; /* Menu ocupa toda a largura no topo */
+    height: auto !important;
+    flex-direction: row !important; /* Transforma os links em um menu horizontal */
+    justify-content: space-around;
+    align-items: center;
+    padding: 10px !important;
+  }
+
+  /* Ajusta o espaçamento do logo da Ford no celular */
+  .sidebar .text-center {
+    margin-bottom: 0 !important;
+  }
+
+  /* Faz o botão de logout se alinhar com o resto dos links */
+  .sidebar .btn-logout {
+    margin-top: 0 !important;
+    padding: 5px 10px !important;
+  }
+
+  .dashboard-area, .content-area {
+    width: 100% !important;
+    padding: 15px !important;
+  }
+}

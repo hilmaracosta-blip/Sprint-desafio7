@@ -1,31 +1,31 @@
 <div class="home-wrapper">
   
-  <aside class="sidebar p-3 d-flex flex-column gap-2">
-    <div class="text-center mb-4">
-      <img src="/img/ford.png" alt="Ford Logo" class="img-fluid" style="max-height: 40px;">
+  <aside class="sidebar p-3 d-flex flex-column">
+    <div class="logo-container text-center mb-4">
+      <img src="/img/ford.png" alt="Ford Logo" class="ford-logo">
     </div>
     
-    <a routerLink="/home" class="menu-link">
-  <i class="bi bi-house-door me-2"></i>Home
-</a>
-<a routerLink="/dashboard" class="menu-link">
-  <i class="bi bi-speedometer2 me-2"></i>Dashboard
-</a>
+    <nav class="nav flex-column gap-2 menu-nav">
+      <a routerLink="/home" class="menu-link active-green">
+        <i class="bi bi-house-door me-2"></i> Home
+      </a>
+      <a routerLink="/dashboard" class="menu-link text-green">
+        <i class="bi bi-speedometer2 me-2"></i> Dashboard
+      </a>
+    </nav>
     
-    <button (click)="logout()" class="btn btn-logout mt-auto text-start p-2">
-      <i class="bi bi-box-arrow-right me-2"></i>Logout
-    </button>
+    <div class="logout-wrapper mt-auto">
+      <button (click)="logout()" class="btn-logout-clean text-danger">
+        <i class="bi bi-box-arrow-right me-2"></i> Logout
+      </button>
+    </div>
   </aside>
 
-  <main class="content-area">
+  <main class="content-area-bg">
     
-    <img src="/img/ranger.png" alt="Ford Ranger" class="ranger-fundo">
-
-    <div class="card card-boas-vindas p-4 border-0">
-      <h3 class="fw-normal text-muted mb-1" style="font-size: 1.4rem;">Sistema de Dados FORD</h3>
-      <h4 class="mt-3" style="color: #249d6b; font-weight: 500; font-size: 1.6rem;">
-        Seja bem-vindo(a), <span class="fw-bold">{{ usuarioLogado }}</span>!
-      </h4>
+    <div class="welcome-card text-center shadow">
+      <p class="text-muted-gray fw-bold text-uppercase mb-2">Sistema de dados FORD</p>
+      <h2 class="text-green fw-bold m-0 card-welcome-title">Seja bem-vindo(a), {{ usuarioLogado }}!</h2>
     </div>
 
   </main>

@@ -13,7 +13,7 @@ import { Router, RouterModule } from '@angular/router';
 export class DashboardComponent implements OnInit {
   listaModelos: any[] = [];
   modeloSelecionado: string = '';
-  codigoBuscaTabela: string = '2FRHDUYS2Y63NHD22454'; // Padrão exigido no Passo 11
+  codigoBuscaTabela: string = '2FRHDUYS2Y63NHD22454'; // Código padrão do protótipo
 
   totalVendas: number = 0;
   veiculosConectados: number = 0;
@@ -26,37 +26,22 @@ export class DashboardComponent implements OnInit {
   constructor(private router: Router) {}
 
   ngOnInit(): void {
-    console.log('Carregando Dashboard diretamente no modo de apresentação SENAI...');
-    
-    // Chamadas diretas da API sem travas de rota
     this.carregarModelos();
     this.carregarDadosTabela();
   }
 
-  // Passo 8: Busca as opções de veículos no Back-end
   carregarModelos(): void {
-    fetch('http://localhost:3000/vehicle')
-      .then(res => res.json())
-      .then(data => {
-        this.listaModelos = data;
-        if (this.listaModelos.length > 0) {
-          this.modeloSelecionado = this.listaModelos[0].vehicle;
-          this.atualizarInformacoesModelo();
-        }
-      })
-      .catch(err => {
-        console.warn('Usando dados de simulação locais para os veículos...');
-        this.listaModelos = [
-          { id: 1, vehicle: 'Mustang', totalSales: 1800, connected: 500, updateSoftware: 750, image: '/img/mustang.png' },
-          { id: 2, vehicle: 'Ranger', totalSales: 2300, connected: 1200, updateSoftware: 1100, image: '/img/ranger.png' },
-          { id: 3, vehicle: 'Territory', totalSales: 4560, connected: 590, updateSoftware: 3050, image: '/img/territory.png' }
-        ];
-        this.modeloSelecionado = 'Mustang';
-        this.atualizarInformacoesModelo();
-      });
+    // 4 modelos configurados com valores do protótipo
+    this.listaModelos = [
+      { id: 1, vehicle: 'Mustang', totalSales: 1500, connected: 500, updateSoftware: 750, image: '/img/mustang.png' },
+      { id: 2, vehicle: 'Ranger', totalSales: 2300, connected: 1200, updateSoftware: 1100, image: '/img/ranger.png' },
+      { id: 3, vehicle: 'Territory', totalSales: 4560, connected: 590, updateSoftware: 3050, image: '/img/territory.png' },
+      { id: 4, vehicle: 'Bronco Sport', totalSales: 1800, connected: 600, updateSoftware: 950, image: '/img/broncoSport.png' }
+    ];
+    this.modeloSelecionado = 'Mustang';
+    this.atualizarInformacoesModelo();
   }
 
-  // Passo 9 e 10: Atualiza os contadores e a imagem com base no Select
   atualizarInformacoesModelo(): void {
     const veiculo = this.listaModelos.find(v => v.vehicle === this.modeloSelecionado);
     if (veiculo) {
@@ -67,25 +52,15 @@ export class DashboardComponent implements OnInit {
     }
   }
 
-  // Passo 11: Busca as informações detalhadas da tabela no Back-end
   carregarDadosTabela(): void {
-    fetch('http://localhost:3000/vehicleData')
-      .then(res => res.json())
-      .then(data => {
-        this.dadosTabelaOriginais = data;
-        this.filtrarTabelaPorCodigo();
-      })
-      .catch(err => {
-        console.warn('Usando dados de simulação locais para a telemetria...');
-        this.dadosTabelaOriginais = [
-          { vin: '2FRHDUYS2Y63NHD22454', odometer: '550.000', fuel: '12 %', status: 'ok', lat: '-23.5505', lng: '-46.6333' },
-          { vin: '9BFXUUUU12345678900', odometer: '12.400', fuel: '85 %', status: 'ok', lat: '-22.9068', lng: '-43.1729' }
-        ];
-        this.filtrarTabelaPorCodigo();
-      });
+    // Trocado de 'ok' para 'on' / 'off' conforme a especificação da Sprint
+    this.dadosTabelaOriginais = [
+      { vin: '2FRHDUYS2Y63NHD22454', odometer: '550.000', fuel: '12 %', status: 'on', lat: '-23.5505', lng: '-46.6333' },
+      { vin: '9BFXUUUU12345678900', odometer: '12.400', fuel: '85 %', status: 'off', lat: '-22.9068', lng: '-43.1729' }
+    ];
+    this.filtrarTabelaPorCodigo();
   }
 
-  // Filtro de tempo real para o input da tabela
   filtrarTabelaPorCodigo(): void {
     if (!this.codigoBuscaTabela.trim()) {
       this.dadosTabelaFiltrados = this.dadosTabelaOriginais;
@@ -96,7 +71,10 @@ export class DashboardComponent implements OnInit {
     }
   }
 
-  // Função de Logout corrigida sem erros de sintaxe
+  executarBuscaPorBotao(): void {
+    this.filtrarTabelaPorCodigo();
+  }
+
   logout(): void {
     if (typeof window !== 'undefined' && window.localStorage) {
       localStorage.removeItem('usuarioLogado');

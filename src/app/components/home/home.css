@@ -1,85 +1,163 @@
-/* Estrutura principal dividida em duas colunas */
+/* Layout Base - Impede barras de rolagem desnecessárias */
 .home-wrapper {
   display: flex;
-  width: 100vw;
-  height: 100vh;
+  height: 100vh; /* Fixa na altura exata da tela */
+  width: 100%;
+  background-color: #ffffff;
   overflow: hidden;
-  font-family: system-ui, -apple-system, sans-serif;
 }
 
-/* Barra lateral esquerda cinza clara */
+/* Sidebar para telas grandes (Desktop) */
 .sidebar {
-  width: 260px;
+  width: 240px;
+  min-width: 240px;
   height: 100%;
-  background-color: #f8f9fa;
-  border-right: 1px solid #e9ecef;
-  flex-shrink: 0;
+  background-color: #ffffff;
+  border-right: 1px solid #eaeaea;
+  z-index: 10;
 }
 
-/* Links do Menu Lateral */
+/* Tamanho controlado do logotipo da Ford (Evita que estoure em tablets) */
+.ford-logo {
+  max-width: 130px;
+  height: auto;
+}
+
+/* Estilo limpo dos links do menu */
 .menu-link {
-  color: #495057;
   text-decoration: none;
   font-weight: 500;
-  padding: 10px 15px;
-  border-radius: 6px;
-  transition: all 0.2s ease;
-  font-size: 0.95rem;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  padding: 8px 12px;
+  color: #198754 !important; /* Texto verde corporativo puro */
 }
 
 .menu-link:hover {
-  background-color: #e9ecef;
-  color: #212529;
+  opacity: 0.7;
 }
 
-.menu-link.active {
-  background-color: #249d6b;
-  color: #ffffff !important;
-}
-
-.btn-logout {
+.btn-logout-clean {
   background: none;
   border: none;
-  color: #dc3545;
+  padding: 8px 12px;
   font-weight: 500;
-  font-size: 0.95rem;
-  border-radius: 6px;
-  transition: background-color 0.2s;
+  font-size: 1rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
 }
 
-.btn-logout:hover {
-  background-color: #ffeef0;
-  color: #a71d2a;
-}
-
-/* Área da Direita: Agora atua como palco absoluto para os elementos */
-.content-area {
-  flex-grow: 1;
+/* --- PASSO 6: Controle Inteligente do Fundo da Ranger --- */
+.content-area-bg {
+  flex: 1;
   height: 100%;
-  background-color: #ffffff; /* Fundo branco limpo igual ao protótipo */
-  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
+  background-image: url('/img/ranger.png');
+  background-size: contain; /* Ajusta a imagem proporcionalmente sem esticar demais */
+  background-position: center right 5%; /* Alinha o enquadramento do carro */
+  background-repeat: no-repeat;
+  padding: 30px;
+  background-color: #ffffff;
 }
 
-/* Controle dinâmico da imagem da Ranger */
-.ranger-fundo {
-  width: 90%;             /* Controla o tamanho exato do carro na tela */
-  max-height: 85%;        /* Evita que ela estoure o topo ou o rodapé */
-  object-fit: contain;    /* Garante que o carro apareça 100% inteiro sem cortes */
-  pointer-events: none;   /* Impede que o usuário arraste a imagem sem querer */
-}
-
-/* Cartão de Boas-Vindas Flutuante e Translúcido */
-.card-boas-vindas {
-  position: absolute;     /* Flutua precisamente por cima do carro */
-  background: rgba(255, 255, 255, 0.85) !important;
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  width: 100%;
-  max-width: 480px;
+/* Cartão de Boas-vindas proporcional */
+.welcome-card {
+  background: rgba(255, 255, 255, 0.94);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  padding: 30px;
   border-radius: 12px;
-  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.08);
-  z-index: 5;
+  max-width: 400px;
+  width: 100%;
+  border: 1px solid rgba(220, 220, 220, 0.6);
+  z-index: 2;
+  margin-right: auto; /* Empurra o card levemente para a esquerda para não cobrir o carro */
+  margin-left: 5%;
+}
+
+.card-welcome-title {
+  font-size: 1.6rem;
+}
+
+/* Cores Estritas da Sprint */
+.text-muted-gray {
+  color: #555555 !important; /* Cinza escuro fosco */
+  font-size: 0.8rem;
+  letter-spacing: 0.5px;
+  margin: 0;
+}
+
+.text-green {
+  color: #198754 !important;
+}
+
+/* =======================================================
+   📱 Ajuste Dinâmico para Celulares e Tablets (Abaixo de 768px)
+   ======================================================= */
+@media (max-width: 768px) {
+  .home-wrapper {
+    flex-direction: column;
+    overflow-y: auto; /* Permite rolar apenas se a tela for minúscula */
+  }
+
+  .sidebar {
+    width: 100%;
+    min-width: 100%;
+    height: auto;
+    border-right: none;
+    border-bottom: 1px solid #eaeaea;
+    flex-direction: row !important;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 15px !important;
+  }
+
+  .logo-container {
+    margin-bottom: 0 !important;
+  }
+  
+  .ford-logo {
+    max-width: 90px; /* Reduz a logo no mobile/tablet para caber tudo */
+  }
+
+  .menu-nav {
+    flex-direction: row !important;
+    gap: 10px !important;
+  }
+
+  .menu-link {
+    font-size: 0.9rem;
+    padding: 5px;
+  }
+
+  .logout-wrapper {
+    margin-top: 0 !important;
+  }
+  
+  .btn-logout-clean {
+    font-size: 0.9rem;
+    padding: 5px;
+  }
+
+  /* Ranger de Fundo adequada no Mobile/Tablet */
+  .content-area-bg {
+    height: calc(100vh - 65px);
+    background-size: cover; /* Cobre o fundo no celular sem deformar */
+    background-position: center;
+    padding: 15px;
+  }
+
+  .welcome-card {
+    max-width: 90%;
+    margin: 0 auto; /* Centraliza totalmente no mobile */
+    padding: 20px;
+  }
+  
+  .card-welcome-title {
+    font-size: 1.3rem;
+  }
 }
