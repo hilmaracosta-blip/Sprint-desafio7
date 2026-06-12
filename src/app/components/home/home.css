@@ -1,0 +1,85 @@
+/* Estrutura principal dividida em duas colunas */
+.home-wrapper {
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  font-family: system-ui, -apple-system, sans-serif;
+}
+
+/* Barra lateral esquerda cinza clara */
+.sidebar {
+  width: 260px;
+  height: 100%;
+  background-color: #f8f9fa;
+  border-right: 1px solid #e9ecef;
+  flex-shrink: 0;
+}
+
+/* Links do Menu Lateral */
+.menu-link {
+  color: #495057;
+  text-decoration: none;
+  font-weight: 500;
+  padding: 10px 15px;
+  border-radius: 6px;
+  transition: all 0.2s ease;
+  font-size: 0.95rem;
+}
+
+.menu-link:hover {
+  background-color: #e9ecef;
+  color: #212529;
+}
+
+.menu-link.active {
+  background-color: #249d6b;
+  color: #ffffff !important;
+}
+
+.btn-logout {
+  background: none;
+  border: none;
+  color: #dc3545;
+  font-weight: 500;
+  font-size: 0.95rem;
+  border-radius: 6px;
+  transition: background-color 0.2s;
+}
+
+.btn-logout:hover {
+  background-color: #ffeef0;
+  color: #a71d2a;
+}
+
+/* Área da Direita: Agora atua como palco absoluto para os elementos */
+.content-area {
+  flex-grow: 1;
+  height: 100%;
+  background-color: #ffffff; /* Fundo branco limpo igual ao protótipo */
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Controle dinâmico da imagem da Ranger */
+.ranger-fundo {
+  width: 90%;             /* Controla o tamanho exato do carro na tela */
+  max-height: 85%;        /* Evita que ela estoure o topo ou o rodapé */
+  object-fit: contain;    /* Garante que o carro apareça 100% inteiro sem cortes */
+  pointer-events: none;   /* Impede que o usuário arraste a imagem sem querer */
+}
+
+/* Cartão de Boas-Vindas Flutuante e Translúcido */
+.card-boas-vindas {
+  position: absolute;     /* Flutua precisamente por cima do carro */
+  background: rgba(255, 255, 255, 0.85) !important;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  width: 100%;
+  max-width: 480px;
+  border-radius: 12px;
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.08);
+  z-index: 5;
+}

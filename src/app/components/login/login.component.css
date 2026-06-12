@@ -1,0 +1,40 @@
+/* Inputs: Borda cinza suave padrão */
+.custom-input-group {
+  border: 1px solid #bdc3c7 !important;
+  border-radius: 6px;
+  transition: border 0.1s ease-in-out;
+}
+
+/* Foco ativo: Borda preta marcada ao selecionar o campo para digitar */
+.custom-input-group:focus-within {
+  border: 2px solid #000000 !important;
+}
+
+/* Remove contornos e sombras azuis nativas do Bootstrap */
+.custom-input-group .form-control:focus {
+  box-shadow: none !important;
+  outline: none !important;
+}
+
+/* Botão Entrar: Cor cinza padrão da Sprint */
+.btn-entrar {
+  background-color: #95a5a6;
+  transition: background-color 0.2s ease-in-out, transform 0.1s ease-in-out;
+}
+
+/* EFEITO DE REALCE (Hover): Botão escurece sutilmente ao passar o mouse */
+.btn-entrar:hover {
+  background-color: #7f8c8d !important;
+  color: #ffffff !important;
+}
+
+/* Feedback de clique pressionado */
+.btn-entrar:active {
+  transform: scale(0.99);
+}
+
+/* Pinta o interruptor interno de verde Ford ao ser ativado */
+.form-check-input:checked {
+  background-color: #249d6b !important;
+  border-color: #249d6b !important;
+}

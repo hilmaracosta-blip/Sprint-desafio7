@@ -1,12 +1,12 @@
-import { Component, signal } from '@angular/core';
+import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
-  templateUrl: './app.html',
-  styleUrl: './app.css'
+  standalone: true,
+  imports: [RouterOutlet], // Mudamos de DashboardComponent para RouterOutlet
+  template: '<router-outlet></router-outlet>' // O RouterOutlet gerencia a troca de telas
 })
-export class App {
-  protected readonly title = signal('api_ford');
+export class AppComponent {
+  title = 'api_ford';
 }

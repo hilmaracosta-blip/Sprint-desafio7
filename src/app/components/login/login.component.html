@@ -1,0 +1,72 @@
+<div class="container vh-100 d-flex align-items-center justify-content-center" style="background-color: #ffffff;">
+  <div class="row w-100 align-items-center">
+    
+    <div class="col-md-6 text-center d-none d-md-block">
+      <img src="/img/ranger.png" alt="Ford Ranger" class="img-fluid" style="max-height: 380px;">
+    </div>
+
+    <div class="col-md-5 offset-md-1">
+      <div class="card p-4 border-0 bg-white">
+        
+        <div class="text-center mb-5">
+          <img src="/img/ford.png" alt="Ford Logo" class="img-fluid mb-2" style="max-height: 55px;">
+          <h4 style="color: #249d6b; font-weight: 500; font-size: 1.5rem; letter-spacing: 0.5px;">Boas-vindas</h4>
+        </div>
+
+        <form (ngSubmit)="efetuarLogin()">
+          
+          <div class="d-flex align-items-center mb-3">
+            <div class="input-group custom-input-group flex-grow-1">
+              <span class="input-group-text bg-white border-0 text-success fs-5">
+                <i class="bi bi-person"></i>
+              </span>
+              <input type="text" class="form-control border-0 shadow-none text-muted" [(ngModel)]="usuarioInput" name="usuario" placeholder="Insira seu e-mail" required style="font-size: 0.95rem;">
+            </div>
+            <div style="width: 35px;" class="text-end">
+              <i class="bi bi-info-circle text-success fs-5" style="cursor: pointer;"></i>
+            </div>
+          </div>
+
+          <div class="d-flex align-items-center mb-3">
+            <div class="input-group custom-input-group flex-grow-1">
+              <span class="input-group-text bg-white border-0 text-success fs-5">
+                <i class="bi bi-lock"></i>
+              </span>
+              <input [type]="esconderSenha ? 'password' : 'text'" class="form-control border-0 shadow-none text-muted" [(ngModel)]="senhaInput" name="senha" placeholder="Insira sua senha" required style="font-size: 0.95rem;">
+              
+              <span class="input-group-text bg-white border-0 text-muted" (click)="alternarVisualizacaoSenha()" style="cursor: pointer;">
+                <i class="bi" [ngClass]="esconderSenha ? 'bi-eye-slash' : 'bi-eye'"></i>
+              </span>
+            </div>
+            <div style="width: 35px;"></div>
+          </div>
+
+          <div class="d-flex align-items-center justify-content-end mb-4" style="width: 100%; padding: 0;">
+            
+            <div class="d-flex align-items-center" style="gap: 12px; margin-right: 0;">
+              <span class="text-muted" style="font-size: 0.88rem; font-weight: 400; white-space: nowrap;">Logar automaticamente</span>
+              <div class="form-check form-switch p-0 m-0 d-flex align-items-center">
+                <input class="form-check-input m-0" type="checkbox" role="switch" id="autoLogin" style="width: 2.3em; height: 1.15em; cursor: pointer;">
+              </div>
+            </div>
+
+            <div style="width: 35px;" class="text-end ms-3">
+              <i class="bi bi-info-circle text-success fs-5" style="cursor: pointer;"></i>
+            </div>
+          </div>
+
+          <div *ngIf="mensagemErro" class="alert alert-danger p-2 small text-center rounded mb-3" role="alert" style="margin-right: 35px;">
+            {{ mensagemErro }}
+          </div>
+
+          <div class="d-flex align-items-center mt-3">
+            <button type="submit" class="btn btn-entrar w-100 border-0 py-2 text-white flex-grow-1" style="font-size: 0.95rem; border-radius: 5px; font-weight: 500; height: 42px;">Entrar</button>
+            <div style="width: 35px;"></div>
+          </div>
+
+        </form>
+      </div>
+    </div>
+
+  </div>
+</div>
