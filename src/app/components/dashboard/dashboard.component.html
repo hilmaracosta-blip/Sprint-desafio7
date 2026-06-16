@@ -66,10 +66,13 @@
       
       <div class="bg-navy p-2 d-flex align-items-center border-bottom border-secondary">
         <div class="d-flex gap-2 w-100" style="max-width: 450px;">
-          <input type="text" class="form-control form-control-sm border-0 shadow-none bg-white text-dark" 
-                 placeholder="Buscar por Código - Vin..." 
-                 [(ngModel)]="codigoBuscaTabela">
-          <button (click)="executarBuscaPorBotao()" class="btn btn-buscar-sprint btn-sm px-3 fw-bold">
+          <input 
+            type="text" 
+            class="form-control form-control-sm shadow-none"
+            [(ngModel)]="codigoBuscaTabela" 
+            placeholder="Buscar por Código - Vin...">
+          
+          <button (click)="executarBuscaPorBotao()" class="btn-buscar-sprint">
             Buscar
           </button>
         </div>
@@ -89,7 +92,7 @@
           </thead>
           <tbody>
             <tr *ngFor="let item of dadosTabelaFiltrados" class="small">
-              <td class="fw-medium text-info">{{ item.vin }}</td>
+              <td class="fw-medium">{{ item.vin }}</td>
               <td>{{ item.odometer }} km</td>
               <td>{{ item.fuel }}</td>
               <td>

@@ -13,7 +13,7 @@ import { Router, RouterModule } from '@angular/router';
 export class DashboardComponent implements OnInit {
   listaModelos: any[] = [];
   modeloSelecionado: string = '';
-  codigoBuscaTabela: string = '2FRHDUYS2Y63NHD22454'; // Código padrão do protótipo
+  codigoBuscaTabela: string = '2FRHDUYS2Y63NHD22454'; 
 
   totalVendas: number = 0;
   veiculosConectados: number = 0;
@@ -24,6 +24,7 @@ export class DashboardComponent implements OnInit {
   dadosTabelaOriginais: any[] = [];
 
   constructor(private router: Router) {}
+  
 
   ngOnInit(): void {
     this.carregarModelos();
@@ -61,15 +62,20 @@ export class DashboardComponent implements OnInit {
     this.filtrarTabelaPorCodigo();
   }
 
-  filtrarTabelaPorCodigo(): void {
-    if (!this.codigoBuscaTabela.trim()) {
-      this.dadosTabelaFiltrados = this.dadosTabelaOriginais;
-    } else {
-      this.dadosTabelaFiltrados = this.dadosTabelaOriginais.filter(d => 
-        d.vin.toLowerCase().includes(this.codigoBuscaTabela.toLowerCase().trim())
-      );
-    }
+ filtrarTabelaPorCodigo(): void {
+  const codigoLimpo = this.codigoBuscaTabela ? this.codigoBuscaTabela.trim().toLowerCase() : '';
+
+  // 1. Se o campo de busca estiver vazio, a tabela DEVE ficar vazia
+  if (!codigoLimpo) {
+    this.dadosTabelaFiltrados = []; 
+    return;
   }
+
+  // 2. Se houver texto, faz o filtro exato ou por aproximação
+  this.dadosTabelaFiltrados = this.dadosTabelaOriginais.filter(d => 
+    d.vin.toLowerCase().includes(codigoLimpo)
+  );
+}
 
   executarBuscaPorBotao(): void {
     this.filtrarTabelaPorCodigo();
