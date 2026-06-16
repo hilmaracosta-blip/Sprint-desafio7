@@ -1,4 +1,4 @@
-/* Reaproveitando a estrutura mestra de colunas da home */
+
 .home-wrapper {
   display: flex;
   width: 100vw;
@@ -65,7 +65,7 @@
   background-color: #002c5f;
 }
 
-/* Estilo dos Cards de Métricas */
+
 .card-metric {
   background-color: #ffffff;
   border-radius: 8px;
@@ -76,7 +76,7 @@
   font-size: 0.72rem;
 }
 
-/* Palco da foto centralizada */
+
 .vehicle-display-area {
   flex-grow: 1;
   max-height: 40%;
@@ -90,7 +90,7 @@
   object-fit: contain;
 }
 
-/* Animação suave de transição ao trocar de carro */
+
 .animate-fade {
   animation: fadeIn 0.4s ease-in-out;
 }
@@ -100,7 +100,7 @@
   to { opacity: 1; transform: scale(1); }
 }
 
-/* Customização para a Tabela e Containers escuros */
+
 .table-container {
   background-color: #002c5f;
   overflow: hidden;
@@ -116,11 +116,10 @@
   padding: 10px;
 }
 
-/* Botão Buscar com destaque elegante sobre o fundo Navy */
+
 .btn-buscar {
-  background-color: #ffffff;    /* Fundo branco para contrastar com o azul escuro */
-  color: #002c5f;               /* Texto no mesmo tom de azul escuro do fundo */
-  border: none;
+  background-color: #ffffff;    
+  color: #002c5f;               
   padding: 6px 18px;
   font-weight: bold;
   font-size: 0.85rem;
@@ -132,19 +131,18 @@
 
 /* Efeito sutil ao passar o mouse */
 .btn-buscar:hover {
-  background-color: #e2e8f0;    /* Um cinza bem clarinho */
-  transform: scale(1.03);       /* Dá uma leve aumentada para indicar clique */
-}
+  background-color: #e2e8f0;    
+  transform: scale(1.03);       
 
 /* Estilo destacado para o botão Buscar da Sprint */
 .btn-buscar-sprint {
-  background-color: #ffffff !important; /* Fundo branco para dar alto contraste */
-  color: #002c5f !important;            /* Texto no tom azul-escuro oficial da Ford */
+  background-color: #ffffff !important; 
+  color: #002c5f !important;           
   border: none !important;
   padding: 6px 16px !important;
   font-weight: bold !important;
   font-size: 0.85rem !important;
-  border-radius: 4px !important;        /* Cantos suavemente arredondados */
+  border-radius: 4px !important;        
   cursor: pointer;
   margin-left: 8px;
   transition: background-color 0.2s ease;
@@ -152,18 +150,18 @@
 
 /* Efeito ao passar o mouse por cima */
 .btn-buscar-sprint:hover {
-  background-color: #e2e8f0 !important; /* Muda para um cinza bem clarinho */
+  background-color: #e2e8f0 !important; 
 }
 
 /* Estilo destacado de alto contraste para o botão da Ford Sprint */
 .btn-buscar-sprint {
-  background-color: #ffffff !important; /* Fundo branco brilhante */
-  color: #002c5f !important;            /* Texto no azul marinho oficial */
+  background-color: #ffffff !important; 
+  color: #002c5f !important;            
   border: none !important;
   padding: 6px 16px !important;
   font-weight: bold !important;
   font-size: 0.85rem !important;
-  border-radius: 4px !important;        /* Cantos arredondados combinando com o input */
+  border-radius: 4px !important;        
   cursor: pointer !important;
   display: inline-flex !important;
   align-items: center !important;
@@ -173,5 +171,9 @@
 
 /* Efeito ao passar o mouse */
 .btn-buscar-sprint:hover {
-  background-color: #e2e8f0 !important; /* Cinza bem clarinho ao passar o mouse */
+  background-color: #e2e8f0 !important; 
+}
+
+.search-bar-container {
+  max-width: 450px;
 }
